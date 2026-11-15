@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08122B" />
+    <title>@ViewData["Title"] · Ritmo Guatemala</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Panel lateral">
+            <a class="brand" asp-controller="Clientes" asp-action="Index" aria-label="Ritmo Guatemala">
+                <span class="brand-mark" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </span>
+                <span class="brand-copy">
+                    <strong>Ritmo Guatemala</strong>
+                    <small>Panel de análisis</small>
+                </span>
+            </a>
+
+            <p class="sidebar-heading">NAVEGACIÓN</p>
+            <nav aria-label="Navegación principal">
+                <ul class="navigation-list">
+                    <li>
+                        <span class="navigation-item navigation-placeholder" aria-disabled="true">
+                            <svg class="navigation-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10 8.5-7 8.5 7v10.5h-6v-7h-5v7h-6z" /></svg>
+                            Inicio
+                        </span>
+                    </li>
+                    <li>
+                        <a class="navigation-item is-active" asp-controller="Clientes" asp-action="Index" aria-current="page">
+                            <svg class="navigation-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" /></svg>
+                            Clientes
+                        </a>
+                    </li>
+                    <li>
+                        <span class="navigation-item navigation-placeholder" aria-disabled="true">
+                            <svg class="navigation-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 6-6 4 4 8-9" /><path d="M15 6h6v6" /></svg>
+                            Ventas y Marketing
+                        </span>
+                    </li>
+                    <li>
+                        <span class="navigation-item navigation-placeholder" aria-disabled="true">
+                            <svg class="navigation-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.7 6.3.9-4.6 4.5 1.1 6.3-5.6-3-5.6 3 1.1-6.3-4.6-4.5 6.3-.9z" /></svg>
+                            Dirección Estratégica
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-profile">
+                <span class="profile-avatar" aria-hidden="true">EP</span>
+                <span><strong>Erick Pop</strong><small>Usuario 28</small></span>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            @RenderBody()
+        </main>
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

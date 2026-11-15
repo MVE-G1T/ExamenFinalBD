@@ -1,0 +1,9 @@
+RUTA RELATIVA | BYTES | SHA-256
+README.md | 36 | 3af868049bd37d04edb6f7666dcf7ed632e388c2a5b6b65b9f9d1c80934fa2ae
+Database/01 Script db_RitmoGuatemala.sql | 498095 | aec33d6782056a7fd426a8aca7cb33e824e6e1756c83ea1d777225030f129819
+Prompts/Prompt Final Examen.txt | 13930 | 213c1344f8fc24eef1f59ff6be82470402f6fbe96b7733b577d8f462ca145e87
+Prompts/Prompt Inicio Examen.txt | 3139 | eb1d65db22a1f659d44957be29e28ff2107d7817ee7af7994255dfebd02b72b0
+Prototipos/Dashboard principal.png | 397081 | 2a2c5bdcc846f99a905fe05a41335c208a93521f7832d41fc30b50a6b372dc39
+Prototipos/Dirección Estratégica.png | 397537 | de098fbb56bbbef9534423fd923ae83a87a8672f85e2221f878b60c05dc47579
+Prototipos/PantallaInicio.png | 427531 | 129d818bfe5d2262e0561e343a8f7c98afd1d517103f728f2107c60469fbc848
+Prototipos/Ventas y Marketin.png | 347534 | b4c2eba3c3905a7f0c2f43ac69c218e631ab03a07ac0139ef8a05d5299d5f9eb

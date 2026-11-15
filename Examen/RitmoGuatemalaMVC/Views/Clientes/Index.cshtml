@@ -1,0 +1,181 @@
+@using System.Globalization
+@using System.Text.Json
+@using RitmoGuatemalaMVC.Configuration
+@model RitmoGuatemalaMVC.Models.ClientesDashboardViewModel
+
+@{
+    ViewData["Title"] = "Clientes";
+    var referenceDate = Model.ReferenceDate.ToDateTime(TimeOnly.MinValue);
+    var referenceLabel = referenceDate.ToString("dd MMM yyyy", CultureInfo.GetCultureInfo("es-GT"));
+}
+
+<section class="dashboard-page" aria-labelledby="page-title">
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">RITMO GUATEMALA <span>·</span> CLIENTES</p>
+            <h1 class="page-title" id="page-title">Descubre tu próximo favorito</h1>
+            <p class="page-subtitle">Actividad, preferencias y lanzamientos musicales de la plataforma.</p>
+        </div>
+        <div class="header-user" aria-label="Usuario de sesión">
+            <span class="profile-avatar" aria-hidden="true">EP</span>
+            <span><strong>@ClientSessionConstants.UserName</strong><small>Usuario @ClientSessionConstants.UserId</small></span>
+        </div>
+    </header>
+
+    <form class="filters-panel" method="get" asp-controller="Clientes" asp-action="Index" aria-label="Filtros del panel">
+        <div class="filters-heading">
+            <div>
+                <h2>Filtros</h2>
+                <p>Los gráficos responden a los filtros compatibles.</p>
+            </div>
+            <span class="reference-badge">Datos hasta @referenceLabel</span>
+        </div>
+        <div class="filter-grid">
+            <label class="filter-field">
+                <span>Año</span>
+                <select name="year">
+                    @foreach (var year in Model.Years)
+                    {
+                        <option value="@year" selected="@(year == Model.SelectedYear)">@year</option>
+                    }
+                </select>
+            </label>
+            <label class="filter-field">
+                <span>Departamento</span>
+                <select name="departamentoId">
+                    <option value="">Todos los departamentos</option>
+                    @foreach (var department in Model.Departments)
+                    {
+                        <option value="@department.Id" selected="@(department.Id == Model.SelectedDepartmentId)">@department.Name</option>
+                    }
+                </select>
+            </label>
+            <label class="filter-field">
+                <span>Género musical</span>
+                <select name="generoId">
+                    <option value="">Todos los géneros</option>
+                    @foreach (var genre in Model.Genres)
+                    {
+                        <option value="@genre.Id" selected="@(genre.Id == Model.SelectedGenreId)">@genre.Name</option>
+                    }
+                </select>
+            </label>
+            <label class="filter-field">
+                <span>Lanzamientos desde</span>
+                <input type="date" name="desde" value="@Model.ReleaseStart.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" />
+            </label>
+            <label class="filter-field">
+                <span>Lanzamientos hasta</span>
+                <input type="date" name="hasta" value="@Model.ReleaseEnd.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" max="@Model.ReferenceDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" />
+            </label>
+            <div class="filter-actions">
+                <button class="button-primary" type="submit">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6.5 7.5V19l-3 1v-7.5z" /></svg>
+                    Aplicar filtros
+                </button>
+                <a class="clear-filters" asp-controller="Clientes" asp-action="Index">Limpiar</a>
+            </div>
+        </div>
+        <p class="filter-note">Ingresos usa meses completos; usuarios, reproducciones y estrenos excluyen fechas posteriores al @referenceLabel. Los filtros de año y género no cambian el total de usuarios.</p>
+    </form>
+
+    <section class="kpi-grid" aria-label="Indicadores clave">
+        <a class="kpi-card" href="#chart-monthly" aria-label="Ingresos totales: @Model.Kpis.Revenue.ToString("N0", CultureInfo.GetCultureInfo("es-GT")). Ir a ingresos por mes">
+            <span class="kpi-icon cyan-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M14.5 8.5c-.6-.6-1.4-.9-2.4-.9-1.4 0-2.3.7-2.3 1.7 0 2.8 5 1.1 5 4 0 1.1-1 1.9-2.6 1.9-1.1 0-2.1-.4-2.8-1.2M12 6v12" /></svg></span>
+            <span class="kpi-copy"><span class="kpi-label">Ingresos totales</span><strong>Q @Model.Kpis.Revenue.ToString("N0", CultureInfo.GetCultureInfo("es-GT"))</strong><small>Meses completos de @Model.SelectedYear</small></span>
+            <span class="kpi-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="kpi-card" href="#chart-monthly" aria-label="Nuevas suscripciones: @Model.Kpis.NewSubscriptions. Ir a ingresos por mes">
+            <span class="kpi-icon cyan-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5" /><path d="M2.8 20v-1.7a5 5 0 0 1 5-5h2.4a5 5 0 0 1 5 5V20M18 8v7M14.5 11.5h7" /></svg></span>
+            <span class="kpi-copy"><span class="kpi-label">Nuevas suscripciones</span><strong>@Model.Kpis.NewSubscriptions.ToString("N0", CultureInfo.GetCultureInfo("es-GT"))</strong><small>Registradas en @Model.SelectedYear, meses completos</small></span>
+            <span class="kpi-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="kpi-card" href="#chart-plans" aria-label="Usuarios activos: @Model.Kpis.ActiveUsers de @Model.Kpis.RegisteredUsers. Ir a usuarios por plan">
+            <span class="kpi-icon cyan-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7.5" r="3.5" /><path d="M2.8 20v-1.7a5 5 0 0 1 5-5h2.4a5 5 0 0 1 5 5V20M17 4.5a3.5 3.5 0 0 1 0 6.7M18.4 13.5a4.5 4.5 0 0 1 2.8 4.2V20" /></svg></span>
+            <span class="kpi-copy"><span class="kpi-label">Usuarios activos</span><strong>@Model.Kpis.ActiveUsers <em>de @Model.Kpis.RegisteredUsers</em></strong><small>Registrados hasta @referenceLabel</small></span>
+            <span class="kpi-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="kpi-card" href="#chart-songs" aria-label="Minutos escuchados: @Model.Kpis.MinutesListened.ToString("N0", CultureInfo.GetCultureInfo("es-GT")). Ir a canciones más escuchadas">
+            <span class="kpi-icon cyan-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.5v17l13-8.5z" /></svg></span>
+            <span class="kpi-copy"><span class="kpi-label">Minutos escuchados</span><strong>@Model.Kpis.MinutesListened.ToString("N0", CultureInfo.GetCultureInfo("es-GT"))</strong><small>@Model.Kpis.Plays.ToString("N0", CultureInfo.GetCultureInfo("es-GT")) reproducciones registradas</small></span>
+            <span class="kpi-arrow" aria-hidden="true">↗</span>
+        </a>
+    </section>
+
+    <section class="charts-grid" aria-label="Gráficas del panel">
+        <article class="chart-card chart-card-wide" id="chart-monthly">
+            <header class="chart-heading">
+                <div><h2>Ingresos por mes</h2><p>Q acumulados por mes completo</p></div>
+                <span class="chart-key"><i class="key-swatch key-yellow"></i>Suscripciones <i class="key-swatch key-green"></i>Publicidad</span>
+            </header>
+            <div class="chart-canvas" data-chart="monthly" data-series="@JsonSerializer.Serialize(Model.MonthlyRevenue)" aria-label="Gráfica de ingresos por mes"></div>
+        </article>
+
+        <article class="chart-card" id="chart-genres">
+            <header class="chart-heading">
+                <div><h2>Ingresos por género</h2><p>Participación del total</p></div>
+            </header>
+            <div class="chart-canvas donut-chart" data-chart="donut" data-series="@JsonSerializer.Serialize(Model.RevenueByGenre)" data-center="Q @Model.Kpis.Revenue.ToString("0.0,,", CultureInfo.InvariantCulture) M" aria-label="Distribución de ingresos por género"></div>
+            <ul class="chart-legend">
+                @foreach (var item in Model.RevenueByGenre)
+                {
+                    var share = Model.Kpis.Revenue == 0 ? 0 : item.Amount / Model.Kpis.Revenue * 100;
+                    <li><i style="--item-color:@item.Color"></i><span>@item.Label</span><strong>Q @item.Amount.ToString("N0", CultureInfo.GetCultureInfo("es-GT"))</strong><small>@share.ToString("0.0", CultureInfo.GetCultureInfo("es-GT"))%</small></li>
+                }
+            </ul>
+        </article>
+
+        <article class="chart-card" id="chart-departments">
+            <header class="chart-heading"><div><h2>Ingresos por departamento</h2><p>Q acumulados de @Model.SelectedYear</p></div></header>
+            <div class="chart-canvas horizontal-chart" data-chart="horizontal" data-series="@JsonSerializer.Serialize(Model.RevenueByDepartment)" aria-label="Ingresos por departamento"></div>
+        </article>
+
+        <article class="chart-card" id="chart-songs">
+            <header class="chart-heading"><div><h2>Canciones más escuchadas</h2><p>Reproducciones registradas durante @Model.SelectedYear</p></div></header>
+            <div class="chart-canvas song-chart" data-chart="songs" data-series="@JsonSerializer.Serialize(Model.TopSongs)" aria-label="Canciones más escuchadas"></div>
+        </article>
+
+        <article class="chart-card" id="chart-plans">
+            <header class="chart-heading"><div><h2>Usuarios por plan</h2><p>Planes de suscripción al @referenceLabel</p></div></header>
+            <div class="chart-canvas donut-chart" data-chart="donut" data-series="@JsonSerializer.Serialize(Model.UsersByPlan)" data-center="@Model.Kpis.RegisteredUsers usuarios" aria-label="Usuarios por plan"></div>
+            <ul class="chart-legend plan-legend">
+                @foreach (var item in Model.UsersByPlan)
+                {
+                    var share = Model.Kpis.RegisteredUsers == 0 ? 0 : (decimal)item.Users / Model.Kpis.RegisteredUsers * 100;
+                    <li><i style="--item-color:@item.Color"></i><span>@item.Label</span><strong>@item.Users</strong><small>@share.ToString("0.0", CultureInfo.GetCultureInfo("es-GT"))%</small></li>
+                }
+            </ul>
+        </article>
+
+        <article class="chart-card release-card" id="chart-releases">
+            <header class="chart-heading"><div><h2>Nuevos lanzamientos</h2><p>Por fecha de estreno, hasta @referenceLabel</p></div><span class="release-count">@Model.NewReleases.Count</span></header>
+            <p class="release-range">@Model.ReleaseStart.ToString("dd MMM yyyy", CultureInfo.GetCultureInfo("es-GT")) – @Model.ReleaseEnd.ToString("dd MMM yyyy", CultureInfo.GetCultureInfo("es-GT"))</p>
+            @if (Model.ReleaseStart > Model.ReleaseEnd)
+            {
+                <div class="empty-state"><span aria-hidden="true">♫</span><strong>El periodo todavía no inicia</strong><p>La fecha inicial es posterior a la fecha de referencia. No se muestran estrenos futuros.</p></div>
+            }
+            else if (Model.NewReleases.Count == 0)
+            {
+                <div class="empty-state"><span aria-hidden="true">♫</span><strong>Sin lanzamientos en este periodo</strong><p>Prueba otro rango de fechas. No se incluyen estrenos posteriores al día de referencia.</p></div>
+            }
+            else
+            {
+                <ul class="release-list">
+                    @foreach (var release in Model.NewReleases)
+                    {
+                        <li><span class="release-dot" style="--item-color:@release.Color"></span><span class="release-copy"><strong>@release.Title</strong><small>@release.Artist · @release.Genre</small></span><time datetime="@release.ReleaseDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)">@release.ReleaseDate.ToString("dd MMM", CultureInfo.GetCultureInfo("es-GT"))</time></li>
+                    }
+                </ul>
+            }
+        </article>
+    </section>
+
+    <footer class="dashboard-footer">
+        <span>Fuente: <strong>db_RitmoGuate</strong></span>
+        <span>Las cifras mensuales incluyen meses completos; no estiman la parte futura del mes en curso.</span>
+    </footer>
+</section>
+
+@section Scripts {
+    <script src="~/js/clients-dashboard.js" asp-append-version="true"></script>
+}

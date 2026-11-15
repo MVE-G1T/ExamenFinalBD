@@ -1,0 +1,25 @@
+Manifiesto SHA-256; raíz relativa: C:\Users\NVM\Pictures\Erick 7490-24-11302
+Formato: Ruta relativa | Tipo | Bytes | Modificado local | SHA-256
+README.md | Archivo | 36 | 2026-11-15 09:10:30 -06:00 | 3af868049bd37d04edb6f7666dcf7ed632e388c2a5b6b65b9f9d1c80934fa2ae
+Database/01 Script db_RitmoGuatemala.sql | Archivo | 498095 | 2026-11-15 08:34:14 -06:00 | aec33d6782056a7fd426a8aca7cb33e824e6e1756c83ea1d777225030f129819
+Examen/RitmoGuatemalaMVC/appsettings.Development.json | Archivo | 127 | 2026-11-15 10:22:35 -06:00 | 73f95f9e0ceb205fc1c4dc50c07697fcfa29d7087868c2aef1d504cb38c771ec
+Examen/RitmoGuatemalaMVC/appsettings.json | Archivo | 151 | 2026-11-15 10:22:35 -06:00 | 200332b434757a0054a3d356c91cde01f2c48712be8aa2bcb0f3e973619f06e3
+Examen/RitmoGuatemalaMVC/Program.cs | Archivo | 562 | 2026-11-15 10:49:43 -06:00 | 853e478e619969b11c0611824ab2f5022c579e57525d7f456883d9ecb7018b2c
+Examen/RitmoGuatemalaMVC/RitmoGuatemalaMVC.csproj | Archivo | 330 | 2026-11-15 10:24:34 -06:00 | 65d44561239cbb04ad726dad80bfecebc1eea65f497901e0481174b269afa037
+Examen/RitmoGuatemalaMVC/Configuration/ClientSessionConstants.cs | Archivo | 371 | 2026-11-15 10:27:40 -06:00 | 5761ff44b07eea4f194b1e40ee34e430f10025235abf9956887fa87116b092c4
+Examen/RitmoGuatemalaMVC/Controllers/ClientesController.cs | Archivo | 1070 | 2026-11-15 10:49:40 -06:00 | ef89a328fac810d6dc6edba8ec679fa789261ca4e654608a731f2f0c83d9622b
+Examen/RitmoGuatemalaMVC/Data/ClientesDashboardRepository.cs | Archivo | 16624 | 2026-11-15 10:49:20 -06:00 | 315f5cc63fd997204c804289b04b55f977fb2c89e264f4462a7da2b95f3f7e6f
+Examen/RitmoGuatemalaMVC/Data/DatabaseConnectionVerifier.cs | Archivo | 1966 | 2026-11-15 10:27:41 -06:00 | 9de0b5a86169e3d5aaa3d60c2237fd8eeef3d79945eecb3004bbb12c3119faf6
+Examen/RitmoGuatemalaMVC/Data/ReadOnlySqlConnectionFactory.cs | Archivo | 1131 | 2026-11-15 10:27:41 -06:00 | f169dc77bf8f4839c7ec26be32a95ff11f03cae6378dd0293faa1dde800473bb
+Examen/RitmoGuatemalaMVC/Models/ClientesDashboardViewModel.cs | Archivo | 1853 | 2026-11-15 10:47:45 -06:00 | f6d72588d6f3bffd8d226604de65ff4625f9963be0fef46c80cf0616cf84881e
+Examen/RitmoGuatemalaMVC/Properties/launchSettings.json | Archivo | 642 | 2026-11-15 10:22:35 -06:00 | 766505ed4c49c26a68dbf4c04924903894fc5a9db91e180c9194b6e4aac9efeb
+Examen/RitmoGuatemalaMVC/Views/_ViewImports.cshtml | Archivo | 78 | 2026-11-15 10:28:48 -06:00 | 828b27d576a044f989e3e45f13332aac29115549dd96db01fc87405409460f2b
+Examen/RitmoGuatemalaMVC/Views/_ViewStart.cshtml | Archivo | 35 | 2026-11-15 10:22:35 -06:00 | 47e02b4da20d198892b7b1b00b12944068797c438ef2e82d20ff70b4d56bad39
+Examen/RitmoGuatemalaMVC/Views/Clientes/Index.cshtml | Archivo | 12369 | 2026-11-15 10:51:40 -06:00 | 42b68d1b84c812fda8e72758f876d92886302f787ceb5c6a601f1ae5df875b46
+Examen/RitmoGuatemalaMVC/Views/Shared/_Layout.cshtml | Archivo | 3213 | 2026-11-15 10:50:24 -06:00 | 3f50f9a8466dc713805425eee623e734098eb9cca989c5d1af4784ac59bf300f
+Examen/RitmoGuatemalaMVC/wwwroot/css/site.css | Archivo | 17652 | 2026-11-15 10:54:57 -06:00 | efb7982ebd0b3cf5893ac14ffaf430b303e49f45c52362bd5f23cac8a1b36886
+Examen/RitmoGuatemalaMVC/wwwroot/js/clients-dashboard.js | Archivo | 9269 | 2026-11-15 10:52:45 -06:00 | e260dbc5576e5ad1ad9f9b8ef2c7ae438a9ad98ddcb814043a117eeefd13d057
+Prototipos/Clientes.png | Archivo | 397081 | 2026-11-15 08:58:39 -06:00 | 2a2c5bdcc846f99a905fe05a41335c208a93521f7832d41fc30b50a6b372dc39
+Prototipos/Dirección Estratégica.png | Archivo | 397537 | 2026-11-15 08:58:52 -06:00 | de098fbb56bbbef9534423fd923ae83a87a8672f85e2221f878b60c05dc47579
+Prototipos/PantallaInicio.png | Archivo | 427531 | 2026-11-15 08:58:27 -06:00 | 129d818bfe5d2262e0561e343a8f7c98afd1d517103f728f2107c60469fbc848
+Prototipos/Ventas y Marketin.png | Archivo | 347534 | 2026-11-15 08:58:46 -06:00 | b4c2eba3c3905a7f0c2f43ac69c218e631ab03a07ac0139ef8a05d5299d5f9eb

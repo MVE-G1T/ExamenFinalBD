@@ -1,0 +1,23 @@
+SEGUIMIENTO DE AUDITORÃA â€” PROMPT 0
+Registro inicial relacionado: Inicio_20261115_091829
+Identificador de seguimiento: Seguimiento_Prompt0_20261115_103403
+Fecha y hora: 2026-11-15 10:34:03 -06:00 (Central America Standard Time)
+RaÃ­z de trabajo: C:\Users\NVM\Pictures\Erick 7490-24-11302
+Estudiante: Erick; carnÃ©: 7490-24-11302
+Agente: Codex; versiÃ³n: NO VERIFICABLE; sesiÃ³n: NO VERIFICABLE
+TECNOLOGÃA ELEGIDA
+.NET SDK 10.0.400; ASP.NET Core MVC; target net10.0; vistas Razor; autenticaciÃ³n e Identity deshabilitados.
+Interfaz propia en Razor y CSS; sin CDN, Node/npm, Bootstrap, jQuery ni librerÃ­a de grÃ¡ficas. No se agregaron filtros, grÃ¡ficas, indicadores ni secciones de contenido.
+Paquete NuGet directo Ãºnico: Microsoft.Data.SqlClient 7.1.2. dotnet list package --vulnerable --include-transitive: sin paquetes vulnerables. dotnet build --no-restore: correcto, 0 advertencias, 0 errores.
+UI creada: panel lateral con Inicio, Clientes activo, Ventas y Marketing y DirecciÃ³n EstratÃ©gica como marcadores sin funciÃ³n; Ã¡rea de contenido vacÃ­a salvo el tÃ­tulo â€œDescubre tu prÃ³ximo favoritoâ€.
+CONFIGURACIÃ“N DE DATOS
+Servidor localhost,1435; base db_RitmoGuate; usuario SQL sa. ConexiÃ³n cifrada y ApplicationIntent.ReadOnly; TrustServerCertificate estÃ¡ habilitado para el SQL Server local en Docker.
+La contraseÃ±a no estÃ¡ en archivos del proyecto, manifiesto ni registro. La aplicaciÃ³n lee RITMOGUATE_SQL_PASSWORD. La variable no estaba configurada en el entorno persistente de Windows; para la comprobaciÃ³n se pasÃ³ transitoriamente en memoria desde la variable MSSQL_SA_PASSWORD del contenedor. No se registrÃ³ su valor.
+Consulta de comprobaciÃ³n ejecutada por la aplicaciÃ³n: SELECT DB_NAME() WHERE DB_NAME() = @ExpectedDatabaseName; parÃ¡metro @ExpectedDatabaseName tipado como NVARCHAR(128), valor esperado db_RitmoGuate. Resultado: conexiÃ³n y base confirmadas.
+La aplicaciÃ³n contiene Ãºnicamente esta consulta SELECT. ApplicationIntent.ReadOnly es intenciÃ³n de conexiÃ³n; la cuenta sa no es una cuenta SQL restringida a lectura. No se modificÃ³ el servidor ni se crearon usuarios/permisos.
+Constantes configuradas sin uso en pantalla: Erick Pop, UsuarioID 28; fecha de referencia DateOnly.FromDateTime(DateTime.Today). Las consultas futuras deberÃ¡n excluir fechas posteriores a esa fecha.
+COMPROBACIONES
+HTTP GET /: 200; tÃ­tulo y navegaciÃ³n esperados presentes; CSS /css/site.css: 200; sin control de filtro en el HTML. AplicaciÃ³n detenida despuÃ©s de la verificaciÃ³n.
+No se iniciaron contenedores, no se ejecutÃ³ el script docente, no se modificaron datos ni se hizo commit.
+VisualizaciÃ³n en navegador real: NO VERIFICABLE. Persistencia futura de la variable de contraseÃ±a en Windows: NO VERIFICABLE/no configurada al momento de la comprobaciÃ³n. Identificador de sesiÃ³n/conversaciÃ³n: NO VERIFICABLE.
+El registro inicial se conserva intacto; este archivo es un seguimiento separado. Archivos y hashes del estado de Prompt 0 constan en Manifest_Prompt0_SHA256.txt, que excluye su propio hash.

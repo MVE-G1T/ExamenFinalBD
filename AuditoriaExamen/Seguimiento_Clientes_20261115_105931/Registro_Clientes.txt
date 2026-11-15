@@ -1,0 +1,35 @@
+SEGUIMIENTO DE AUDITORÍA — DASHBOARD CLIENTES
+Identificador: Seguimiento_Clientes_20261115_105931
+Fecha y hora observadas: 2026-11-15 10:59:31 -06:00 (America/Guatemala; Windows: Central America Standard Time)
+Raíz confirmada: C:\Users\NVM\Pictures\Erick 7490-24-11302
+Estudiante: Erick
+Carné: 7490-24-11302
+Agente: Codex; versión: NO VERIFICABLE; identificador de sesión: NO VERIFICABLE
+Registro anterior conservado: AuditoriaExamen/Inicio_20261115_091829
+Seguimiento anterior relacionado: AuditoriaExamen/Seguimiento_Prompt0_20261115_103403
+
+FUENTES Y ALCANCE
+Prototipo examinado visualmente: Prototipos/Clientes.png. Se observó la composición, paleta, iconos y tipos de gráfico; la imagen original no se modificó. No se pudo releer el enunciado porque la carpeta/archivos Prompts no están presentes en la raíz observada (aunque el registro inicial los inventariaba). Se aplicaron los requisitos explícitos aportados por el estudiante en esta conversación y las restricciones de auditoría conocidas.
+Base: db_RitmoGuate en localhost,1435, mediante contenedor existente sqlserver_basedatos. Se verificó que Docker ya respondía y el contenedor estaba Up; no se inició, detuvo ni alteró ningún contenedor.
+Usuario de sesión verificado con SELECT: UsuarioID 28, Erick Pop, departamento 1. Perfil mostrado: Erick Pop (UsuarioID 28). Los indicadores del prototipo son agregados de la plataforma; no se filtran por UsuarioID 28 salvo que la definición del dato lo requiera.
+
+CAMBIOS EN LA APLICACIÓN
+Tecnología: ASP.NET Core MVC, .NET SDK 10, target net10.0, vistas Razor. Se conservó Microsoft.Data.SqlClient 7.1.2 como único paquete directo; sin Identity, Entity Framework, paquetes adicionales, CDN, Node/npm o librerías de gráficos.
+Pantalla Clientes implementada en Examen/RitmoGuatemalaMVC: KPIs de ingresos, nuevas suscripciones, usuarios activos y minutos/reproducciones; gráficas SVG dibujadas con JavaScript propio: ingresos mensuales apilados, ingresos por género, ingresos por departamento, canciones por reproducciones registradas y usuarios por plan. Iconos inline SVG siguiendo los símbolos del prototipo. Navegación mantiene Clientes activo y las otras entradas como marcadores.
+Filtros GET: año, departamento y género; rango de estreno desde/hasta. Los filtros se parametrizan en SQL. Departamento afecta a ingresos, escuchas, lanzamientos y estadísticas de usuarios/planes. Género afecta a ingresos, escuchas y estrenos. Año afecta a finanzas y reproducciones; las métricas de usuarios son una instantánea acumulada y no dependen del año/género. El rango desde/hasta solo afecta a nuevos lanzamientos.
+Fecha de referencia: 2026-11-15, obtenida del reloj del sistema en zona America/Guatemala. Ingresos/suscripciones provienen de FinanzasMensuales, cuya granularidad es mensual: solo se incluyen meses completamente transcurridos (enero–octubre 2026); noviembre parcial y diciembre se omiten. Usuarios, reproducciones y canciones se limitan a fechas <= referencia. Reproducciones se limitan además al año seleccionado. Para 2026 el rango acordado de estrenos desde 16 de noviembre hasta hoy está invertido; se muestra un estado vacío y no se incluye ningún estreno futuro. El fin de rango se limita a la fecha de referencia.
+
+VALIDACIÓN DE SOLO LECTURA
+No se ejecutó el script docente ni se escribió en la base. Las consultas de inspección fueron SELECT; los comandos de la aplicación son SELECT parametrizados. No se modificaron tablas, datos ni claves foráneas.
+Verificación de servidor: db_RitmoGuate; SQL Server 16.0.4265.3; fecha del servidor 2026-11-15. Tablas observadas: Usuarios=100; Reproducciones=314; FinanzasMensuales=1440; Canciones=15; Departamentos=8; Géneros=5; Planes=3. Las 20 claves foráneas observadas estaban habilitadas y confiables (is_disabled=0; is_not_trusted=0).
+Hay fechas futuras en la base: Usuarios llega a 2026-11-22, Reproducciones a 2026-11-27, finanzas incluye meses hasta diciembre y años futuros del dataset. Las consultas filtran fechas según las reglas anteriores.
+SELECT de verificación inicial de la app confirmó DB_NAME() = db_RitmoGuate.
+Valores al corte para 2026 sin filtros dimensionales: ingresos Q2,245,000; nuevas suscripciones 8,830; usuarios activos 95 de 99 registrados; 128 reproducciones y 1,405.65 minutos. Contraste independiente para departamento Guatemala + género Marimba y regional: ingresos Q341,240; 1,341 suscripciones; 11 reproducciones y 181.40 minutos; 40 usuarios registrados/activos. El rango de estreno 2026-11-16 a 2026-11-15 tiene 0 registros. Los valores presentados se derivan de datos observados, no son cifras de pronóstico.
+Build: dotnet build --no-restore correcto, 0 advertencias, 0 errores. HTTP GET / y GET /Clientes con filtros: 200; CSS y JavaScript: 200. La respuesta HTML mostró los KPI esperados y el estado de rango vacío. Ejecución del JavaScript dentro de un navegador real y revisión visual de la página renderizada: NO VERIFICABLE en este entorno; los SVG se generan en el cliente con JavaScript propio.
+No se hizo commit. Git en rama main, HEAD 6029fd119086f3d9a71d1685c5b0f1c5b9fd82a6. Estado observado: directorios raíz AuditoriaExamen, Database, Examen y Prototipos sin seguimiento; no se alteraron commits.
+
+SEGURIDAD Y LÍMITES
+La aplicación lee la contraseña desde la variable de entorno RITMOGUATE_SQL_PASSWORD; el valor no se incluyó en archivos, comandos mostrados, salida ni este registro. Presencia configurada en el ámbito de usuario de Windows; ruta de archivo: N/A (variable externa). No se detectaron configuraciones/archivos secretos nuevos dentro del árbol de proyecto. No se muestran credenciales. La conexión usa SQL login sa con ApplicationIntent.ReadOnly y el código de esta pantalla ejecuta únicamente SELECT; el servidor no aplica una cuenta/permisos exclusivamente de lectura.
+Exclusiones usadas para inventariar y repetir al cierre: AuditoriaExamen; .git; carpetas de dependencias/cachés/compilación/artefactos node_modules, packages, vendor, bin, obj, dist, build, target, out, .next, .nuxt, .cache, __pycache__, .pytest_cache, .mypy_cache, .idea, .vs, coverage y artifacts; enlaces/reparse points y archivos externos apuntados por ellos; secretos/almacenes de credenciales con patrones .env, credential, secret, token, keystore, keychain, .pfx, .p12, .pem y .key. Para configuraciones sensibles excluidas se registra solo presencia y ruta relativa, sin leer contenido; no hubo ninguna detectada dentro del proyecto. El manifiesto incluye archivos regulares accesibles restantes con ruta relativa, tipo, bytes, fecha de modificación y SHA-256.
+Conversación/localizador accesible desde herramientas: NO VERIFICABLE; no se buscaron conversaciones ajenas al examen.
+Este inventario acredita únicamente el estado observado al momento del registro. Las fechas y hashes no demuestran autoría ni ausencia de trabajo previo.

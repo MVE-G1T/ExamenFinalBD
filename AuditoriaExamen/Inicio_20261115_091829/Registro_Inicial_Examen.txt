@@ -1,0 +1,41 @@
+REGISTRO INICIAL DE EVIDENCIAS DEL EXAMEN
+Identificador: Inicio_20261115_091829
+Fecha y hora observadas: 2026-11-15 09:18:29 -06:00 (Central America Standard Time)
+Ruta raíz informada y observada: C:\Users\NVM\Pictures\Erick 7490-24-11302
+Estudiante: Erick
+Carné: 7490-24-11302
+Agente: Codex
+Versión del agente: NO VERIFICABLE
+Identificador de sesión: NO VERIFICABLE
+Estado de estructura:
+- Database: presente.
+- Prototipos: presente.
+- Examen: presente.
+- Script docente Database/01 Script db_RitmoGuatemala.sql: presente; inventariado por hash.
+Inventario (los prototipos solo se registran por metadatos y hash; no se abrieron ni interpretaron imágenes):
+- README.md | tipo=Archivo | bytes=36 | modificado=2026-11-15 09:10:30 -06:00 | SHA-256=3af868049bd37d04edb6f7666dcf7ed632e388c2a5b6b65b9f9d1c80934fa2ae
+- Database/01 Script db_RitmoGuatemala.sql | tipo=Archivo en Database | bytes=498095 | modificado=2026-11-15 08:34:14 -06:00 | SHA-256=aec33d6782056a7fd426a8aca7cb33e824e6e1756c83ea1d777225030f129819
+- Prompts/Prompt Final Examen.txt | tipo=Archivo | bytes=13930 | modificado=2026-11-15 08:35:29 -06:00 | SHA-256=213c1344f8fc24eef1f59ff6be82470402f6fbe96b7733b577d8f462ca145e87
+- Prompts/Prompt Inicio Examen.txt | tipo=Archivo | bytes=3139 | modificado=2026-11-15 08:35:13 -06:00 | SHA-256=eb1d65db22a1f659d44957be29e28ff2107d7817ee7af7994255dfebd02b72b0
+- Prototipos/Dashboard principal.png | tipo=Prototipo (metadatos y hash; contenido no abierto) | bytes=397081 | modificado=2026-11-15 08:58:39 -06:00 | SHA-256=2a2c5bdcc846f99a905fe05a41335c208a93521f7832d41fc30b50a6b372dc39
+- Prototipos/Dirección Estratégica.png | tipo=Prototipo (metadatos y hash; contenido no abierto) | bytes=397537 | modificado=2026-11-15 08:58:52 -06:00 | SHA-256=de098fbb56bbbef9534423fd923ae83a87a8672f85e2221f878b60c05dc47579
+- Prototipos/PantallaInicio.png | tipo=Prototipo (metadatos y hash; contenido no abierto) | bytes=427531 | modificado=2026-11-15 08:58:27 -06:00 | SHA-256=129d818bfe5d2262e0561e343a8f7c98afd1d517103f728f2107c60469fbc848
+- Prototipos/Ventas y Marketin.png | tipo=Prototipo (metadatos y hash; contenido no abierto) | bytes=347534 | modificado=2026-11-15 08:58:46 -06:00 | SHA-256=b4c2eba3c3905a7f0c2f43ac69c218e631ab03a07ac0139ef8a05d5299d5f9eb
+Archivos presentes en Examen: ninguno observado.
+Fuentes adicionales:
+Git presente. Rama: main. Commit: 6029fd119086f3d9a71d1685c5b0f1c5b9fd82a6. Cambios observables (git status --short --untracked-files=all):
+?? "Database/01 Script db_RitmoGuatemala.sql"
+?? "Prompts/Prompt Final Examen.txt"
+?? "Prompts/Prompt Inicio Examen.txt"
+?? "Prototipos/Dashboard principal.png"
+?? "Prototipos/Direcci\303\263n Estrat\303\251gica.png"
+?? Prototipos/PantallaInicio.png
+?? "Prototipos/Ventas y Marketin.png"
+Docker no disponible o no responde; no se listaron contenedores.
+Conversación del examen y localizador: NO VERIFICABLE desde las herramientas de este entorno; no se buscaron conversaciones ajenas.
+Límites y exclusiones:
+Se excluyeron AuditoriaExamen (incluidos registros previos), .git del manifiesto de archivos, directorios de dependencias/caché/compilación: node_modules, packages, vendor, bin, obj, dist, build, target, out, .next, .nuxt, .cache, __pycache__, .pytest_cache, .mypy_cache, .idea, .vs, coverage, artifacts; enlaces/reparse points y archivos externos apuntados por ellos. Se excluyeron archivos secretos y almacenes de credenciales (patrones .env, credential, secret, token, keystore, keychain, .pfx, .p12, .pem, .key); no se leyeron sus contenidos.
+Configuraciones sensibles excluidas (presencia y rutas relativas): ninguna detectada.
+Para repetir al cierre, usar la misma raíz y las mismas exclusiones exactas indicadas arriba; inventariar archivos regulares accesibles por ruta relativa, con tipo, bytes, fecha de modificación y SHA-256.
+Este inventario acredita únicamente el estado observado al momento del registro. Las fechas de archivos y los hashes no demuestran autoría ni ausencia de trabajo previo.
+No se instalaron dependencias, no se iniciaron contenedores, no se ejecutó SQL ni se generó código de aplicación.
